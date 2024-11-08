@@ -4,10 +4,18 @@
     require_once('Pessoa.php');
     require_once('Funcionario.php');
     require_once('Endereco.php');
+    require_once('DAO/Conexao.php');
+    require_once('DAO/Inserir.php');
+    require_once('DAO/Consultar.php');
     use PHP\Modelo\Cliente;//Definir a classe
     use PHP\Modelo\Pessoa;
     use PHP\Modelo\Funcionario;
     use PHP\Modelo\Endereco;
+    use PHP\Modelo\DAO\Conexao;
+    use PHP\Modelo\DAO\Inserir;
+    use PHP\Modelo\DAO\Consultar;
+
+    /*
 
     $endCliente = new Endereco("Avenida Senador Vergueiro",
                                "400",
@@ -27,5 +35,15 @@
     echo $funcionario->imprimir();
     echo $endCliente->imprimir()."<br>";
    
+    */
+
+    $conn = new Conexao();
+    $conn->conectar();//Acessar o banco de dados 
+
+    //$inserir = new Inserir();//Criando acesso a classe inserir
+    //echo $inserir->CadastrarPessoa($conn,"1","Fabio","Rua","11");
+
+    $consultar = new Consultar();
+    echo $consultar->consultarIndividual($conn,'1');
 
 ?>
